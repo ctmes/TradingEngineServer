@@ -2,14 +2,15 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TradingEngineServer.Core.Configuration;
+using TradingEngineServer.Logging;
 
 namespace TradingEngineServer.Core
 {
     sealed class TradingEngineServer : BackgroundService, iTradingEngineServer
     {
-        private readonly ILogger<TradingEngineServer> _logger;
+        private readonly iTextLogger _logger;
         private readonly TradingEngineServerConfiguration _tradingEngineServerConfig;
-        public TradingEngineServer(ILogger<TradingEngineServer> logger, IOptions<TradingEngineServerConfiguration> config) 
+        public TradingEngineServer(iTextLogger logger, IOptions<TradingEngineServerConfiguration> config) 
         { 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _tradingEngineServerConfig = config.Value ?? throw new ArgumentNullException(nameof(config));

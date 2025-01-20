@@ -17,5 +17,5 @@ TradingEngineServerServiceProvider.ServiceProvider = engine.Services;
     await engine.RunAsync().ConfigureAwait(false);
 
 
-    // TradingEngineServer is created 
+    // TradingEngineServer is created
 }
