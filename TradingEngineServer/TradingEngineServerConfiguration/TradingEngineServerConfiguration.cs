@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace TradingEngineServer.Core.Configuration
 {
-    public class TradingEngineServerConfiguration
+    class TradingEngineServerConfiguration
     {
+        public TradingEngineServerSettings TradingEngineServerSettings { get; set; }
+    }
+
+    class TradingEngineServerSettings 
+    { 
+        public int Port { get; set; }
 
     }
 }
