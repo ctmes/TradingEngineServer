@@ -22,7 +22,10 @@ namespace TradingEngineServer.Core
             _logger.LogInformation($"Starting {nameof(TradingEngineServer)}");
             while (!stoppingToken.IsCancellationRequested)
             {
-                // Do something
+                // The following occurs when Ctrl+C in the executable
+                //CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+                //cancellationTokenSource.Cancel();
+                //cancellationTokenSource.Dispose();   
             }
 
             _logger.LogInformation($"Stopping {nameof(TradingEngineServer)}");
