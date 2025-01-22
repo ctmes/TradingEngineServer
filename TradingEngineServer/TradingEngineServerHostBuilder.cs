@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TradingEngineServer.Core.Configuration;
 using TradingEngineServer.Logging;
+using TradingEngineServer.Logging.LoggingConfiguration;
 
 namespace TradingEngineServer.Core
 {
@@ -19,9 +20,11 @@ namespace TradingEngineServer.Core
                 services.AddOptions();
                 // Add TradingEngineServerConfiguration class, mapping .json options to context objection
                 services.Configure<TradingEngineServerConfiguration>(context.Configuration.GetSection(nameof(TradingEngineServerConfiguration)));
+                services.Configure<LoggerConfiguration>(context.Configuration.GetSection(nameof(LoggerConfiguration)));
+
 
                 // Add singleton objects. Any instance of iTradingEngineServer will be the same as TradingEngineServer
-                services.AddSingleton<iTradingEngineServer, TradingEngineServer>();
+                services.AddSingleton<iTradingEngine, TradingEngineServer>();
                 services.AddSingleton<iTextLogger, TextLogger>();
 
                 // Add hosted service, type is what Microsoft's host library will inherit from bkg service

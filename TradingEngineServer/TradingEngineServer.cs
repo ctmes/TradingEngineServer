@@ -4,23 +4,30 @@ using Microsoft.Extensions.Options;
 using TradingEngineServer.Core.Configuration;
 using TradingEngineServer.Logging;
 
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+
 namespace TradingEngineServer.Core
 {
-    sealed class TradingEngineServer : BackgroundService, iTradingEngineServer
+    class TradingEngineServer : BackgroundService, iTradingEngine
     {
+        private readonly IOptions<TradingEngineServerConfiguration> _engineConfiguration;
         private readonly iTextLogger _logger;
-        private readonly TradingEngineServerConfiguration _tradingEngineServerConfig;
-        public TradingEngineServer(iTextLogger logger, IOptions<TradingEngineServerConfiguration> config) 
+
+        public TradingEngineServer(iTextLogger textLogger,
+            IOptions<TradingEngineServerConfiguration> engineConfiguration) 
         { 
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _tradingEngineServerConfig = config.Value ?? throw new ArgumentNullException(nameof(config));
+            _logger = textLogger ?? throw new ArgumentNullException(nameof(textLogger));
+            _engineConfiguration = engineConfiguration ?? throw new ArgumentNullException(nameof(engineConfiguration));
         }
 
         public Task Run(CancellationToken token) => ExecuteAsync(token);
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation($"Starting {nameof(TradingEngineServer)}");
+            _logger.Information(nameof(TradingEngineServer), $"Starting {nameof(TradingEngineServer)}");
             while (!stoppingToken.IsCancellationRequested)
             {
                 // The following occurs when Ctrl+C in the executable
@@ -29,7 +36,8 @@ namespace TradingEngineServer.Core
                 //cancellationTokenSource.Dispose();   
             }
 
-            _logger.LogInformation($"Stopping {nameof(TradingEngineServer)}");
+            _logger.Information(nameof(TradingEngineServer), $"Stopping {nameof(TradingEngineServer)}");
+
             return Task.CompletedTask;
         }
     }
