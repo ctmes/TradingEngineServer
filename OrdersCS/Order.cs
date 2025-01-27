@@ -41,9 +41,11 @@ namespace TradingEngineServer.Orders
 
         public void DecreaseQuantity(uint quantityDelta)
         {
-            if (quantityDelta > CurrentQuantity) { 
-            throw new InvalidOperationException($"Quantity delta > Current quantity for orderID={OrderID}")}
-            CurrentQuantity -= quantityDelta;
+            if (quantityDelta > CurrentQuantity)
+            {
+                throw new InvalidOperationException($"Quantity delta > Current quantity for orderID={OrderID}");
+                CurrentQuantity -= quantityDelta;
+            }
         }
 
         // fields

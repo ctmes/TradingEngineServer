@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace TradingEngineServer.Orders
 {
     public class Limit
     {
+        public Limit(long price)
+        {
+            Price = price;
+        }
+
         public long Price { get; set; }
 
         public OrderbookEntry? Head { get; set; }
@@ -13,9 +19,7 @@ namespace TradingEngineServer.Orders
 
         public uint GetLevelOrderCount() {
             uint orderCount = 0;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             OrderbookEntry headPointer = Head;
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             while (headPointer != null)
             {
                 if (headPointer.CurrentOrder.CurrentQuantity != 0) {
@@ -29,9 +33,7 @@ namespace TradingEngineServer.Orders
 
         public uint GetLevelOrderQuantity() {
             uint orderQuantity = 0;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             OrderbookEntry headPointer = Head;
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             while (headPointer != null) { 
                 orderQuantity += headPointer.CurrentOrder.CurrentQuantity;
                 headPointer = headPointer.Next;

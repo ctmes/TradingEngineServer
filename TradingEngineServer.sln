@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstrumentCS", "InstrumentC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersCS", "OrdersCS\OrdersCS.csproj", "{FBE17BFA-C1E7-4816-81C8-7E4CB07C84FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderbookCS", "OrderbookCS\OrderbookCS.csproj", "{661D0E4F-C7F1-4E33-98F9-8621BD22DF96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FBE17BFA-C1E7-4816-81C8-7E4CB07C84FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBE17BFA-C1E7-4816-81C8-7E4CB07C84FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBE17BFA-C1E7-4816-81C8-7E4CB07C84FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661D0E4F-C7F1-4E33-98F9-8621BD22DF96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661D0E4F-C7F1-4E33-98F9-8621BD22DF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661D0E4F-C7F1-4E33-98F9-8621BD22DF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661D0E4F-C7F1-4E33-98F9-8621BD22DF96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
